@@ -20,9 +20,8 @@ create table Users (userName varchar(256), email varchar(256), password varchar(
 	userOne - name of first user part of conversation
 	userTwo - second user part of conversation
 	convoID - used to locate specific convresation
-	convoFile - txt file of messages in conversation
 */
-create table Conversations (userOne varchar(256), userTwo varchar(256), convoID int, convoFile varchar(256));
+create table Conversations (userOne varchar(256), userTwo varchar(256), convoID int);
 
 /*
 	Table: Messages
@@ -32,5 +31,6 @@ create table Conversations (userOne varchar(256), userTwo varchar(256), convoID 
 	userSent - name of user who sent the message
 	userRecieved - name of user who recieved the message
 	message - text of actual message
+	messageDateTime - time and date the message was sent
 */
-create table Messages (messageID int, convoID int, userSent varchar(256), userRecieved varchar(256), message text);
+create table Messages (messageID int, convoID int, userSent varchar(256), userRecieved varchar(256), message text, messageDateTime date);
