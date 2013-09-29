@@ -49,3 +49,5 @@ create table Messages
 	userRecieved varchar(256), message text, messageDateTime date,
 	primary key(messageID)
 	);
+
+/* need to add this -  grant all privileges on HW1.* to phpuser@'localhost' with grant option; */
