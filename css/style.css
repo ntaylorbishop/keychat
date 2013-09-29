@@ -1,0 +1,139 @@
+
+Body{background-color: #f5f5f5;}
+
+.login_heading{
+background-color:#29ABA4; 
+height: 82px;
+min-width: 980px; 
+border: 3px solid #29ABA4;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+-khtml-border-radius: 20px;
+ border-radius: 20px;
+}
+
+div.login_block{
+float: right;
+margin-top: 17px;
+margin-right: 25px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: 0px 0px 4px #EB7260;
+-moz-box-shadow: 0px 0px 4px #EB7260;
+box-shadow: 0px 0px 4px #EB7260;
+
+}
+
+#login_form input {
+font-family: monospace;	
+color: #EB7260;
+background-color: #f5f5f5;
+outline-color:#EB7260;
+border: 3px solid #EB7260;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: 0px 0px 4px #EB7260;
+-moz-box-shadow: 0px 0px 4px #EB7260;
+box-shadow: 0px 0px 4px #EB7260;
+
+
+}
+ 
+ #login_form table label {
+margin:3px;
+font-family: monospace;
+color:#f5f5f5; 
+
+
+}
+
+div.features_singup {
+
+font-family: Sans-serif;
+color: #f5f5f5;
+border: 3px solid #29ABA4;
+-webkit-box-shadow: 0px 0px 4px #EB7260;
+-moz-box-shadow: 0px 0px 4px ##EB7260;
+box-shadow: 0px 0px 4px #EB7260;
+background-color:#29ABA4; 
+min-height: 400px;
+min-width: 980px; 
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+-khtml-border-radius: 20px;
+border-radius: 20px;
+margin-top:30px;
+
+
+
+}
+
+#features {
+background-color:#EB7260; 	
+border: 3px solid #EB7260;	
+margin-left: 50px;
+margin-top: 50px;
+margin-bottom: 50px;
+width: 484px;
+display: inline-block;
+float: left;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+-khtml-border-radius: 20px;
+ border-radius: 20px;
+ padding: 10px;
+
+
+
+}
+
+#singup_form{
+background-color:#EB7260; 	
+border: 3px solid #EB7260;	
+float: right;
+display: inline-block;
+margin-top: 10px;
+margin-right: 50px;
+position: relative;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+-khtml-border-radius: 20px;
+ border-radius: 20px;
+ padding: 10px;
+ 
+
+}
+
+#singup_form input {
+
+	display: block;
+	margin: 10px;
+	width: 300px;
+	height: 30px;
+	color: #EB7260;
+	background-color: #f5f5f5;
+	outline-color:#29ABA4;
+	border: 3px solid #EB7260;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0px 0px 4px #29ABA4;
+	-moz-box-shadow: 0px 0px 4px #29ABA4;
+	box-shadow: 0px 0px 4px #29ABA4;
+
+	 
+
+}
+
+
+	
+
+
+
+
+
+
+
+
