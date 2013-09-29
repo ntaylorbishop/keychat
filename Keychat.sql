@@ -16,7 +16,7 @@ create table Users
 	(
 	userName varchar(256), email varchar(256), 
 	password varchar(256), isBlocked bool,  
-	isAdmin bool, loginAttempts int,
+	isAdmin bool, 
 	primary key (userName)
 	);
 
