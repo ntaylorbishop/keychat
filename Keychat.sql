@@ -10,9 +10,15 @@ use Keychat
 	email - valid email used to confirm user
 	password - used to login to KeyChat
 	isBlocked - determains of this userID has be blocked due to a corrupted account or deleted account
-	isOnline - users can only recieve messages when they are online 
+	DELETED -- isOnline - users can only recieve messages when they are online -- DELEDTED THIS
 */
-create table Users (userName varchar(256), email varchar(256), password varchar(256), isBlocked bool, isOnline bool, isAdmin bool, loginAttempts int);
+create table Users  
+	(
+	userName varchar(256), email varchar(256), 
+	password varchar(256), isBlocked bool,  
+	isAdmin bool, loginAttempts int,
+	primary key (userName)
+	);
 
 /*
 	Table: Conversations
@@ -21,7 +27,11 @@ create table Users (userName varchar(256), email varchar(256), password varchar(
 	userTwo - second user part of conversation
 	convoID - used to locate specific convresation
 */
-create table Conversations (userOne varchar(256), userTwo varchar(256), convoID int);
+create table Conversations  
+	(
+	convoID int, userOne varchar(256), userTwo varchar(256),
+	primary key(convoID)
+	);
 
 /*
 	Table: Messages
@@ -33,4 +43,9 @@ create table Conversations (userOne varchar(256), userTwo varchar(256), convoID 
 	message - text of actual message
 	messageDateTime - time and date the message was sent
 */
-create table Messages (messageID int, convoID int, userSent varchar(256), userRecieved varchar(256), message text, messageDateTime date);
+create table Messages  
+	(
+	messageID int, convoID int, userSent varchar(256), 
+	userRecieved varchar(256), message text, messageDateTime date,
+	primary key(messageID)
+	);
