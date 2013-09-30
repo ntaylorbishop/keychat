@@ -1,10 +1,121 @@
+<!doctype html>
 <html>
+
+	<head>
+		<title>KeyChat Site</title>
+		<mate charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	</head>
+
 	<body>
-		<h2>Please log in</h2>
-		<form action="siteLogin.php" method="post">
-			Name: <input type="text" name="name" /><br/>
-				ID <input type="password" name="id" /><br />
-				<input type="submit" />
-		</form>
-	</body>
+
+		<div class="login_heading"> 
+
+			<div class="loggo">
+
+			</div>
+
+			<div class="login_block">
+
+				<form id="login_form">
+
+					<table cellspacing="0">
+
+							<tr>
+
+							<td>
+
+								<label> Username </label>
+
+							</td>
+
+
+							<td>
+
+								<label> Password </label>
+
+							</tr>
+
+
+
+							<tr>		
+
+							<td>
+
+								<input type="text" name="user">
+
+							</td>
+							
+							<td>
+
+								 <input type="password" name="pwd">
+
+							</td>	
+
+							<td class="loginbutton">
+
+								<input type="submit" value="login">
+
+
+							</td>	
+
+						</tr>
+
+					</table>
+
+				</form>	
+
+			</div>
+
+		</div>	
+
+
+
+		<div class="features_singup">
+
+			<div id="features">
+					
+				<h1>Discription of KeyChat</h1>
+				<h2>Some Feature</h2>
+				<h2>Some Feature</h2>
+				<h2>Some Feature</h2>
+				<h2>Some Feature</h2> 
+
+			</div>
+				
+						
+			<div id="singup_form">	
+
+				<h1>Sign Up</h1>
+							
+				<form action="php/reg.php" method="post">	
+
+					<input name"Email" onfoucus="if (this.value=='Email') this value = ''" type="email" value="Email">
+
+					<input name"Email" onfoucus="if (this.value=='Email') this value = ''" type="email" value="Re-enter Email">
+										
+					<input name"Username" onfoucus="if (this.value=='Username') this value = ''" type="text" value="Username">
+													
+					<input name"Password" onfoucus="if (this.	value=='Password') this value = ''" type="Password" value="Password">
+										
+					<input name"Password" onfoucus="if (this.	value=='Password') this value = ''" type=" Re-enter Password" value="Password">
+
+					<input type="submit" value="Sign Up">
+
+				</form>
+
+ 			</div>
+
+ 						
+					
+
+		</div>	
+
+
+		
+
+	</body>	
+
+
+
 </html>
