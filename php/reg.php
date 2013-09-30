@@ -1,9 +1,12 @@
 <html><body>
  <?php
 
- 	$username=isset($_POST["username"])?$_POST["username"]:"";
+ 	$username=isset($_POST["Username"])?$_POST["Username"]:"";
 
-  	$password=isset($_POST["password"])?$_POST["password"]:"";
+  	$password=isset($_POST["Password"])?$_POST["Password"]:"";
+
+  	$email=isset($_POST["Email"])?$_POST["Email"]:"";
+
 
 	$con = mysql_connect("Keychat", "phpuser", "password");
 		if(!$con)
@@ -24,9 +27,9 @@
     $result2 = mysql_query($query2);
 
     if (mysql_num_rows($result2) == 0)
-   		header('Location: http://Keychat/error.html');
+   		header('Location: http://chriskvamme/Keychat/error.html');
     else
-   		header('Location: http://Keychat/success.html');
+   		header('Location: http://chriskvamme/Keychat/success.html');
 	
     mysql_close($con);
 
