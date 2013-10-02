@@ -10,14 +10,13 @@ use Keychat
 	email - valid email used to confirm user
 	password - used to login to KeyChat
 	isBlocked - determains of this userID has be blocked due to a corrupted account or deleted account
-	DELETED -- isOnline - users can only recieve messages when they are online -- DELEDTED THIS
 */
 create table Users  
 	(
 	userName varchar(256), 
 	password varchar(256), 
-	isBlocked bool,  
-	isAdmin bool, 
+	isBlocked bool DEFAULT FALSE,
+	isAdmin bool DEFAULT FALSE,
 	primary key (userName)
 	);
 
