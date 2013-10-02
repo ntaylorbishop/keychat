@@ -1,8 +1,6 @@
 <?php 
 	
-	include 'dbcon.php';
-
-    $loginquery = " select * from Users where userName = '".mysql_escape_string($username)."' and password = '".mysql_escape_string($username)."'";
+    $loginquery = " select * from Users where userName = '".mysql_escape_string($username)."' and password = '".mysql_escape_string($password)."'";
    	$loginresult = mysql_query($loginquery);
 
 
