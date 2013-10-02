@@ -6,15 +6,9 @@
   	$password=isset($_POST["Password"])?$_POST["Password"]:"";
 
   	/*connect to DB */
-	$con = mysql_connect("Keychat", "phpuser", "password");
-	if(!$con)
-	{
-		die('Could not connect: ' . mysql_error());
-	}
-	mysql_select_db("Keychat", $con)
-		or die("Unable to connect to the database : " . mysql_error());
+	include 'dbcon.php';
 	
-	/* check to see if exists */
+	/* check to see if user exists */
 	$query1 = " select * from Users where userName = '".mysql_escape_string($username)."'";
 
     $check = mysql_query($query1);
