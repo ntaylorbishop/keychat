@@ -26,7 +26,7 @@
 	    $confirm = mysql_query($query3);
 
 	    if (mysql_num_rows($confirm) == 0)
-	   		header('Location: http://chriskvamme/Keychat/error.html');
+	   		echo "error registering";
 	    else
 	   		include 'login.php';
     else
