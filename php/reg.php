@@ -5,32 +5,34 @@
 
   	$password=isset($_POST["Password"])?$_POST["Password"]:"";
 
-  	$email=isset($_POST["Email"])?$_POST["Email"]:"";
+  	/*connect to DB */
+	include 'dbcon.php';
+	
+	/* check to see if user exists */
+	$query1 = " select * from Users where userName = '".mysql_escape_string($username)."'";
 
+    $check = mysql_query($query1);
 
-	$con = mysql_connect("Keychat", "phpuser", "password");
-		if(!$con)
-		{
-			die('Could not connect: ' . mysql_error());
-		}
-		mysql_select_db("Keychat", $con)
-			or die("Unable to connect to the database : " . mysql_error());
-
-		$query="INSERT INTO Users(userName, password)VALUES('".mysql_escape_string($username)."'
+    if (mysql_num_rows($check) == 0)
+	   	/* make user */
+		$query2="INSERT INTO Users(userName, password)VALUES('".mysql_escape_string($username)."'
 		,'".mysql_escape_string($password)."')";
 
-	$result = mysql_query($query);
+		$insertion = mysql_query($query2);
 
+		/* confirm it worked */
+		$query3 = " select * from Users where userName = '".mysql_escape_string($username)."'";
 
-	$query2 = " select * from Users where userName = '".mysql_escape_string($username)."'";
+	    $confirm = mysql_query($query3);
 
-    $result2 = mysql_query($query2);
-
-    if (mysql_num_rows($result2) == 0)
-   		header('Location: http://chriskvamme/Keychat/error.html');
+	    if (mysql_num_rows($confirm) == 0)
+	   		echo "error registering";
+	    else
+	   		include 'login.php';
     else
-   		header('Location: http://chriskvamme/Keychat/success.html');
-	
+   		/* login */
+		include 'login.php';
+
     mysql_close($con);
 
 
