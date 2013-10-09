@@ -56,4 +56,13 @@ create table Messages
 	primary key(messageID)
 	);
 
+create table BlockUsers  
+	(
+	blocker varchar(256),
+	blockee varchar(256),
+	foreign key (blocker) references Users(userName),
+	foreign key (blockee) references Users(userName)
+
+	);
+
 /* also - grant all privileges on HW1.* to phpuser@'localhost' with grant option; */
