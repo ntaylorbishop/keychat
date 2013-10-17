@@ -1,68 +1,73 @@
 #Keychat
 
-create database Keychat;
-use Keychat
+DROP DATABASE IF EXISTS keychat;
+
+CREATE DATABASE keychat;
+USE keychat;
 
 /*
 	Table: Users
 	Info:
-	userName - name of user 
+	id - auto incremented 
+	username - name of user 
 	email - valid email used to confirm user
 	password - used to login to KeyChat
-	isBlocked - determains of this userID has be blocked due to a corrupted account or deleted account
+	isBlocked - determains if this userID has been blocked due to a corrupted account or deleted account
+	isadmin - duh
 */
-create table Users  
+CREATE TABLE users  
 	(
-	userName varchar(256), 
-	password varchar(256), 
-	isBlocked bool DEFAULT FALSE,
-	isAdmin bool DEFAULT FALSE,
-	primary key (userName)
+	id 				INT UNSIGNED			NOT NULL AUTO_INCREMENT,
+	username 		VARCHAR(256)			NOT NULL,
+	password 		VARCHAR(256)			NOT NULL,
+	isBlocked bool 	DEFAULT FALSE			NOT NULL,
+	isadmin bool 	DEFAULT FALSE			NOT NULL,
+	PRIMARY KEY 	(id)
 	);
 
 /*
 	Table: Conversations
 	Info:
-	userOne - name of first user part of conversation
-	userTwo - second user part of conversation
+	userone - id of first user part of conversation
+	usertwo - second user part of conversation
 	convoID - used to locate specific convresation
-	numMessages - keeps track of how many messages in convo (used for max messages stored)
 */
-create table Conversations  
+CREATE TABLE conversations  
 	(
-	convoID int, 
-	userOne varchar(256), 
-	userTwo varchar(256), 
-	numMessages int,
-	primary key(convoID)
+	id 			int UNSIGNED				NOT NULL AUTO_INCREMENT, 
+	userone 	INT UNSIGNED				NOT NULL, 
+	usertwo 	INT UNSIGNED				NOT NULL, 
+	PRIMARY KEY(id),
+	FOREIGN KEY(userone) REFERENCES users(id),
+	FOREIGN KEY(usertwo) REFERENCES users(id)
+
 	);
 
 /*
 	Table: Messages
 	Info:
-	messagesID - unique id of message
-	convoID - id of conversation the message is in
-	fromUser - name of user who sent the message
+	id - unique id of message
+	convo_id - id of conversation the message is in
+	fromuser - name of user who sent the message
 	message - text of actual message
 	messageDateTime - time and date the message was sent
 */
-create table Messages  
+CREATE TABLE messages  
 	(
-	messageID int, 
-	convoID int, /* maybe make this a foregin key? */
-	fromUser varchar(256), 
-	message text, 
-	messageDateTime date,
-	primary key(messageID)
+	id 			int  UNSIGNED				NOT NULL AUTO_INCREMENT, 
+	convo_id 	int  UNSIGNED				NOT NULL, 
+	from_user 	INT UNSIGNED 				NOT NULL, 
+	message 	text						NOT NULL, 
+	messageDateTime date 					NOT NULL,
+	PRIMARY KEY(id),
+	FOREIGN KEY(convo_id) REFERENCES conversations(id)
 	);
 
-create table BlockUsers  
+CREATE TABLE blockusers  
 	(
-	blocker varchar(256),
-	blockee varchar(256),
-	foreign key (blocker) references Users(userName),
-	foreign key (blockee) references Users(userName)
+	blocker 	INT UNSIGNED				NOT NULL,
+	blockee 	INT UNSIGNED 				NOT NULL,
+	FOREIGN KEY (blocker) REFERENCES users(id),
+	FOREIGN KEY (blockee) REFERENCES users(id)
 
 	);
-
-/* also - grant all privileges on HW1.* to phpuser@'localhost' with grant option; */
