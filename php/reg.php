@@ -9,20 +9,20 @@
 	include 'dbcon.php';
 	
 	/* check to see if user exists */
-	$query1 = " select * from Users where userName = '".mysql_escape_string($username)."'";
+	$query1 = " select * from users where username = '".mysql_escape_string($username)."'";
 
     $check = mysql_query($query1);
 
     if (mysql_num_rows($check) == 0){
 	echo "doesn't exist...  ";
 	/* make user */
-	$query2 = "INSERT INTO Users(userName, password)VALUES";
+	$query2 = "INSERT INTO users(username, password)VALUES";
 	$query2 = $query2 . "('".mysql_escape_string($username)."','".mysql_escape_string($password)."')";
 
 	$insertion = mysql_query($query2);
 
 	/* confirm it worked */
-	$query3 = " select * from Users where userName = '".mysql_escape_string($username)."'";
+	$query3 = " select * from users where username = '".mysql_escape_string($username)."'";
 
 	$confirm = mysql_query($query3);
 
