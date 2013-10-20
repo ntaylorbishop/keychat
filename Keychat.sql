@@ -17,11 +17,11 @@ USE keychat;
 */
 CREATE TABLE users  
 	(
-	id 				INT UNSIGNED			NOT NULL AUTO_INCREMENT,
+	id 			INT UNSIGNED			NOT NULL AUTO_INCREMENT,
 	username 		VARCHAR(256)			NOT NULL,
 	password 		VARCHAR(256)			NOT NULL,
-	isBlocked bool 	DEFAULT FALSE			NOT NULL,
-	isadmin bool 	DEFAULT FALSE			NOT NULL,
+	isBlocked bool 	DEFAULT FALSE				NOT NULL,
+	isadmin bool 	DEFAULT FALSE				NOT NULL,
 	PRIMARY KEY 	(id)
 	);
 
@@ -34,7 +34,7 @@ CREATE TABLE users
 */
 CREATE TABLE conversations  
 	(
-	id 			int UNSIGNED				NOT NULL AUTO_INCREMENT, 
+	id 		INT UNSIGNED				NOT NULL AUTO_INCREMENT, 
 	userone 	INT UNSIGNED				NOT NULL, 
 	usertwo 	INT UNSIGNED				NOT NULL, 
 	PRIMARY KEY(id),
@@ -54,11 +54,11 @@ CREATE TABLE conversations
 */
 CREATE TABLE messages  
 	(
-	id 			int  UNSIGNED				NOT NULL AUTO_INCREMENT, 
-	convo_id 	int  UNSIGNED				NOT NULL, 
-	from_user 	INT UNSIGNED 				NOT NULL, 
+	id 			INT  UNSIGNED				NOT NULL AUTO_INCREMENT, 
+	convo_id 		INT  UNSIGNED				NOT NULL, 
+	from_user 		INT UNSIGNED 				NOT NULL, 
 	message 	text						NOT NULL, 
-	messageDateTime date 					NOT NULL,
+	messageDateTime date 						NOT NULL,
 	PRIMARY KEY(id),
 	FOREIGN KEY(convo_id) REFERENCES conversations(id)
 	);
