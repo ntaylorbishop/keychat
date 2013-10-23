@@ -1,0 +1,15 @@
+#messagelog {
+	display: inline-block;
+	width: 50%;
+	height: 80%;
+	margin-right: 10px;
+	margin-left: auto;
+}
+
+#sendmessage {
+	display: inline-block;
+	width: 50%;
+	height: 20%;
+	margin-right: 10px;
+	margin-left: auto;
+}
