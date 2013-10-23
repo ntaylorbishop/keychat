@@ -14,6 +14,7 @@ function show_message_in_window(text)
 {
 	var d = document.getElementById("messagelog");
 	var p = document.createElement("p");
+	p.className = "sent-message";
 	p.innerHTML = "You: " + text;
 	d.appendChild(p);
 }

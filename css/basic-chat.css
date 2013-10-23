@@ -1,15 +1,25 @@
 #messagelog {
-	display: inline-block;
-	width: 50%;
-	height: 80%;
-	margin-right: 10px;
-	margin-left: auto;
+	width: 40em;
+	height: 25em;
+	overflow: auto;
+	margin-left: 10px;
+	margin-right: auto;
+	margin-bottom: 15px;
+	border: 2px solid;
+	border-radius: 10px;
+	box-shadow: 10px 10px 5px #888888;
+	padding: 5px;
 }
 
 #sendmessage {
-	display: inline-block;
-	width: 50%;
-	height: 20%;
-	margin-right: 10px;
-	margin-left: auto;
+	width: 40em;
+	height: 4em;
+	margin-left: 10px;
+	margin-right: auto;
+}
+
+p.sent-message {
+	display: block;
+	margin-top: 0.1em;
+	margin-bottom: 0.1em;
 }
