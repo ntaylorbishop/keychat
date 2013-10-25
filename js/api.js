@@ -99,9 +99,9 @@ function send_message(their_username, message_text)
 }
 
 var encryption_ops = {
-	"expand_key": null,
-	"encrypt": null,
-	"decrypt": null,
+	"expand_key": vigenere_expand_key,
+	"encrypt": vigenere_encrypt_string,
+	"decrypt": vigenere_decrypt_string,
 	"printableify_bytes": null,
 	"byteify_printables": null,
 	"generate_hmac": null,

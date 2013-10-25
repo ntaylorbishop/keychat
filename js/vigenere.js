@@ -6,7 +6,13 @@
  * Written by Calvin Owens
  */
 
-function encrypt_string(str, key)
+/* Obviously we don't need to do anything here */
+function vigenere_expand_key(key)
+{
+	return key;
+}
+
+function vigenere_encrypt_string(str, key)
 {
 	var enc_str = "";
 	for (var i = 0; i < str.length; i++) {
@@ -20,7 +26,7 @@ function encrypt_string(str, key)
 	return enc_str;
 }
 
-function decrypt_string(str, key)
+function vigenere_decrypt_string(str, key)
 {
 	var dec_str = "";
 	for (var i = 0; i < str.length; i++) {
