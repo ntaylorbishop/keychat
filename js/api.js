@@ -128,7 +128,7 @@ var encryption_ops = {
 		"get_their_public_point": null,
 		"compute_secret": null
 	},
-	"hash_func": null
+	"hash_func": hex_sha1 /* XXX: Needs to handle non-printables */
 };
 
 var key_ops = {
