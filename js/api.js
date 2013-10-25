@@ -83,7 +83,6 @@ function receive_message(event)
 
 function send_message(their_username, message_text)
 {
-	interface_ops.sent_message(message_text);
 	c = conversations[their_username];
 	if (c === undefined)
 		return log("CONVERSATION DOES NOT EXIST. WAT.");
@@ -96,19 +95,32 @@ function send_message(their_username, message_text)
 	};
 
 	post_to_server("/php/message.php", data);
+	interface_ops.sent_message(message_text);
+}
+
+/* For now, these don't need to do anything
+ * Eventually, they'll base64 encode stuff */
+function printableify_bytes(bytes)
+{
+	return bytes;
+}
+
+function byteify_printables(text)
+{
+	return text;
 }
 
 var encryption_ops = {
 	"expand_key": vigenere_expand_key,
 	"encrypt": vigenere_encrypt_string,
 	"decrypt": vigenere_decrypt_string,
-	"printableify_bytes": null,
-	"byteify_printables": null,
+	"printableify_bytes": printableify_bytes,
+	"byteify_printables": byteify_printables,
 	"generate_hmac": null,
 	"verify_hmac": null,
 	"make_signature": null,
 	"verify_signature": null,
-	"get_randomness": null,
+	"get_randomness": Math.random(), /* XXX: This is not good enough */
 	"key_exchange": {
 		"compute_private_value": null,
 		"compute_public_point": null,
