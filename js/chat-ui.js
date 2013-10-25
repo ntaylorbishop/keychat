@@ -19,12 +19,11 @@ function show_message_in_window(text)
 	d.appendChild(p);
 }
 
-function send_message(text)
-{
-	var u = encodeURIComponent(text);
-	var x = new XMLHttpRequest();
-	x.open("POST","message.php",true);
-	x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	x.send("convo_id=" + convo_id + "&text=" + u);
-	show_message_in_window(text);
-}
+
+/* Interface between UI javascript and encryption backend javascript */
+var interface_ops = {
+	"got_message": null,
+	"sent_message": show_message_in_window,
+	"init_conversation": null,
+	"end_conversation": null
+};

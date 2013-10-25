@@ -1,4 +1,4 @@
 var button = document.getElementById("send-message-button");
 button.onclick = function() {
-	send_message(button.form.text.value);
+	message_ops.send_message(null, button.form.text.value);
 };
