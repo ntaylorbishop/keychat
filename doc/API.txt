@@ -1,0 +1,25 @@
+This document describes the API that the backend javascript uses to communicate
+with the server PHP code.
+
+/php/message.php:
+	* POST: Send message
+		Parameters:
+		- "conversation_id": The database ID of the conversation
+		- "text": The (encrypted) text to send to the other end
+	* GET: Get message from other user (long polling)
+		Parameters:
+		- "conversation_id": The database ID of the conversation
+		Response:
+		- JSON document containing message and metadata
+
+/php/conversation.php:
+	* POST: Start a new conversation
+		Parameters:
+		- "username": The username with whom to conversate
+		Response:
+		- 404 NOT FOUND iff user is not online
+		- document describing conversation and metadata, if user is
+		  online and conversation can be started
+	* GET: Get new conversations (long polling)
+		Response:
+		- JSON document describing conversation that was just started
