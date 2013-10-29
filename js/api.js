@@ -75,7 +75,8 @@ function long_poll_for_messages(their_username)
 
 function receive_message(event)
 {
-	/* Do stuff */
+	/* Get text from even somehow... */
+	interface_ops.got_message(text);
 
 	/* Poll more */
 	message_ops.long_poll_for_messages(u);
