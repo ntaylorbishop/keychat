@@ -60,7 +60,7 @@ CREATE TABLE messages
 	id 			INT  UNSIGNED				NOT NULL AUTO_INCREMENT, 
 	convo_id 		INT  UNSIGNED				NOT NULL, 
 	message 	text						NOT NULL, 
-	messageDateTime date 						NOT NULL,
+	messageDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP		NOT NULL,
 	fromuser		INT UNSIGNED				NOT NULL,
 	PRIMARY KEY(id),
 	FOREIGN KEY(convo_id) REFERENCES conversations(id)
