@@ -26,7 +26,23 @@
 	}
 
 	function long_poll_for_conversations() {
-		return null;
+		while (!connection_aborted()) {
+			$r = mysql_query("SELECT * FROM conversations WHERE usertwo='$user_id' and conversation_rec='false'");
+			if (mysql_num_rows($r))
+				break;
+			sleep(1);
+		}
+
+		$o = mysql_result($r, 0);
+		$convo_id = $o['id'];
+		mysql_query("UPDATE conversations SET conversation_rec='true' WHERE id='$convo_id'");
+
+		$response = array(
+			"convo_id" => $convo_id,
+			"their_username" => $o['userone']
+		);
+
+		echo json_encode($response);
 	}
 
 	$user_id = $_SESSION["user_id"];
