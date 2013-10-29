@@ -15,7 +15,7 @@
    		echo "<html><body> Failure logging in </body></html>";
 	} else {
 		session_start();
-		$_SESSION["username"] = $username;
+		$_SESSION["user_id"] = $loginresult['id'];
 		echo "<html><body> Success logging in </body></html>";
 	}
 ?>
