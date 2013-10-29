@@ -23,3 +23,10 @@ p.sent-message {
 	margin-top: 0.1em;
 	margin-bottom: 0.1em;
 }
+
+p.got-message {
+	display: block;
+	margin-top: 0.1em;
+	margin-bottom: 0.1em;
+	font-weight: bold;
+}
