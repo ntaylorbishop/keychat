@@ -1,4 +1,10 @@
 <?php
+	$c = mysql_connect("localhost", "phpuser", "password");
+	if (!$c) {
+		echo "Database connection failed!\n";
+		die();
+	}
+
 	$username = mysql_real_escape_string($_POST['user']);
 	$password = mysql_real_escape_string($_POST['pwd']);
 
