@@ -32,12 +32,14 @@ CREATE TABLE users
 	userone - id of first user part of conversation
 	usertwo - second user part of conversation
 	convoID - used to locate specific convresation
+	conversation_rec - check whether or not conversation has been loaded in the front end
 */
 CREATE TABLE conversations  
 	(
 	id 		INT UNSIGNED				NOT NULL AUTO_INCREMENT, 
 	userone 	INT UNSIGNED				NOT NULL, 
 	usertwo 	INT UNSIGNED				NOT NULL, 
+	conversation_rec bool DEFAULT FALSE 			NOT NULL,
 	PRIMARY KEY(id),
 	FOREIGN KEY(userone) REFERENCES users(id),
 	FOREIGN KEY(usertwo) REFERENCES users(id)
@@ -59,6 +61,7 @@ CREATE TABLE messages
 	convo_id 		INT  UNSIGNED				NOT NULL, 
 	message 	text						NOT NULL, 
 	messageDateTime date 						NOT NULL,
+	fromuser		INT UNSIGNED				NOT NULL,
 	PRIMARY KEY(id),
 	FOREIGN KEY(convo_id) REFERENCES conversations(id)
 	);
