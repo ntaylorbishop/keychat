@@ -57,7 +57,6 @@ CREATE TABLE messages
 	(
 	id 			INT  UNSIGNED				NOT NULL AUTO_INCREMENT, 
 	convo_id 		INT  UNSIGNED				NOT NULL, 
-	from_user 		INT UNSIGNED 				NOT NULL, 
 	message 	text						NOT NULL, 
 	messageDateTime date 						NOT NULL,
 	PRIMARY KEY(id),
