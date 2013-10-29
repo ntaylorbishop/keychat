@@ -7,8 +7,6 @@ with the server PHP code.
 		- "conversation_id": The database ID of the conversation
 		- "text": The (encrypted) text to send to the other end
 	* GET: Get message from other user (long polling)
-		Parameters:
-		- "conversation_id": The database ID of the conversation
 		Response:
 		- JSON document containing message and metadata
 
