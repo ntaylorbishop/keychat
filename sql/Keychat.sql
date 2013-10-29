@@ -20,8 +20,9 @@ CREATE TABLE users
 	id 			INT UNSIGNED			NOT NULL AUTO_INCREMENT,
 	username 		VARCHAR(256)			NOT NULL,
 	password 		VARCHAR(256)			NOT NULL,
-	isBlocked bool 	DEFAULT FALSE				NOT NULL,
+	isblocked bool 	DEFAULT FALSE				NOT NULL,
 	isadmin bool 	DEFAULT FALSE				NOT NULL,
+	isonline bool	DEFAULT FALSE				NOT NULL,
 	PRIMARY KEY 	(id)
 	);
 
