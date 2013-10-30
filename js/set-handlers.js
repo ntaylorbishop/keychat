@@ -5,5 +5,5 @@ chatbutton.onclick = function() {
 
 var convobutton = document.getElementById("convo-button");
 convobutton.onclick = function() {
-	message_ops.send_message("nobody", convobutton.form.text.value);
+	conversation_ops.start_conversation(convobutton.form.text.value);
 };

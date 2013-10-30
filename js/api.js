@@ -47,30 +47,27 @@ function post_to_server(file, data, callback)
 function get_from_server(file, data, callback)
 {
 	var x = new XMLHttpRequest();
-	var g = file + "?"
+	var g
 
-	for (var i in data)
-		p += (i + "=" + encodeURIComponent(data[i]) + "&");
-	p = p.slice(0, -1);
+	if (data !== null) {
+		g = file + "?";
+		for (var i in data)
+			p += (i + "=" + encodeURIComponent(data[i]) + "&");
+		p = p.slice(0, -1);
+	} else {
+		g = file;
+	}
 
 	x.onreadystatechange = callback;
 	x.open("GET", g, true);
 	x.send();
 }
 
-/* Watch for messages from that username
- * Obviously, the conversation has to have been started */
+/* Watch for messages 
+ * There is only one loop serving all conversations */
 function long_poll_for_messages(their_username)
 {
-	c = conversations[their_username];
-	if (c === undefined)
-		return log("CONVERSATION DOES NOT EXIST. WAT.");
-
-	data = {
-		"conversation": c["id"]
-	};
-
-	get_from_server("/php/message.php", data, message_ops.receive_message);
+	get_from_server("/php/message.php", null, message_ops.receive_message);
 }
 
 function receive_message(event)
@@ -111,6 +108,31 @@ function byteify_printables(text)
 	return text;
 }
 
+function verify_conversation_started(e)
+{
+	/* Do stuff */
+	interface_ops.init_conversation(data);
+}
+
+function start_conversation(their_username)
+{
+	data = {
+		"their_username": their_username
+	};
+	post_to_server("php/conversation.php", data, verify_conversation_started);
+}
+
+function long_poll_for_conversations()
+{
+	get_from_server("php/conversation.php", null, conversation_ops.receive_conversation);
+}
+
+function receive_conversation(e)
+{
+	/* Do stuff */
+	interface_ops.init_conversation(data);
+}
+
 var encryption_ops = {
 	"expand_key": vigenere_expand_key,
 	"encrypt": vigenere_encrypt_string,
@@ -143,9 +165,9 @@ var key_ops = {
 };
 
 var conversation_ops = {
-	"start_conversation": null,
-	"receive_conversation": null,
-	"long_poll_for_conversations": null
+	"start_conversation": start_conversation,
+	"receive_conversation": receive_conversation,
+	"long_poll_for_conversations": long_poll_for_conversations
 };
 
 var message_ops = {
