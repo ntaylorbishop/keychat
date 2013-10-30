@@ -17,5 +17,7 @@
 		session_start();
 		$_SESSION["user_id"] = $loginresult['id'];
 		echo "<html><body> Success logging in </body></html>";
+		$loginquery = "UPDATE users SET isonline='1' WHERE id='$user_id'";
+		mysql_query($loginquery);
 	}
 ?>
