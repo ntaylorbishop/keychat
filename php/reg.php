@@ -1,9 +1,9 @@
 <html><body> 
  <?php
 	//phpinfo();
-  	$username=isset($_POST["Username"])?$_POST["Username"]:"";
+  	$username=isset($_POST["user"])?$_POST["user"]:"";
 
-  	$password=isset($_POST["Password"])?$_POST["Password"]:"";
+  	$password=isset($_POST["pwd"])?$_POST["pwd"]:"";
 
   	/*connect to DB */
 	include 'dbcon.php';
