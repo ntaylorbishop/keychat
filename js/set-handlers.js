@@ -1,10 +1,14 @@
-var button = document.getElementById("send-message-button");
-button.onclick = function() {
-	message_ops.send_message("nobody", button.form.text.value);
+var chatbutton = document.getElementById("send-message-button");
+chatbutton.onclick = function() {
+	message_ops.send_message("nobody", chatbutton.form.text.value);
 };
 
-/* Dummy data for now */
-conversations["nobody"] = {
-	"session_key": "fontenotraley",
-	"id": 1337
+var convobutton = document.getElementById("convo-button");
+convobutton.onclick = function() {
+	message_ops.send_message("nobody", convobutton.form.text.value);
+};
+
+var loginbutton = document.getElementById("login-button");
+loginbutton.onclick = function() {
+	message_ops.send_message("nobody", loginbutton.form.text.value);
 };

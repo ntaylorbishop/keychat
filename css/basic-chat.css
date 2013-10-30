@@ -1,4 +1,9 @@
+#start-convo {
+	display: none;
+}
+
 #messagelog {
+	display: none;
 	width: 40em;
 	height: 25em;
 	overflow: auto;
@@ -12,6 +17,7 @@
 }
 
 #sendmessage {
+	display: none;
 	width: 40em;
 	height: 4em;
 	margin-left: 10px;

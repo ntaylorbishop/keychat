@@ -23,3 +23,8 @@ var interface_ops = {
 	"init_conversation": null,
 	"end_conversation": null
 };
+
+function do_test_login()
+{
+	
+}
