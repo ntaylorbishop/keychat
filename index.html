@@ -6,103 +6,59 @@
                 <mate charset="utf-8" />
                 <link rel="stylesheet" type="text/css" href="css/style.css"> 
         </head>
-
         <body>
-
                 <div class="login_heading"> 
-
-                        <div class="loggo">
-
+                        <div class="logo">
+                            <img src="key-icon.PNG">
+                            <label>KeyChat</label>
                         </div>
-
                         <div class="login_block">
-
                                 <form id="login_form">
-
                                         <table cellspacing="0">
-
                                                         <tr>
-
-                                                        <td>
-
+                                                            <td>
                                                                 <label> Username </label>
-
-                                                        </td>
-
-
-                                                        <td>
-
+                                                            </td>
+                                                            <td>
                                                                 <label> Password </label>
-
+                                                            </td>
+                                                                
                                                         </tr>
-
-
-
-                                                        <tr>                
-
-                                                        <td>
-
+                                                        <tr>     
+                                                            <td>           
                                                                 <input type="text" name="user" value="Enter username">
-                                                        </td>
-                                                        
-                                                        <td>
-
+                                                            </td>
+                                                            <td>
                                                                  <input type="password" name="pwd" value="Enter password" >
-
-                                                        </td>        
-
-                                                        <td class="loginbutton">
-
+                                                            </td>   
+                                                            <td>
                                                                 <input type="submit" value="login">
-
-
-                                                        </td>        
-
-                                                </tr>
-
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            </td>
+                                                            <td>
+                                                                <a rel="nofollow" href="https://www.facebook.com/recover/initiate">Forgot your password?</a>
+                                                            </td>
+                                                        </tr>
                                         </table>
-
                                 </form>        
-
-                        </div>
-
-                </div>        
-
-
-
-                
-
-                        
-                                
-                                                
-                        <div id="singup_form">        
-
+                        </div>                                          
+                        <div id="signup_form">        
                                 <h1>Sign Up</h1>
-                                                        
                                 <form action="php/reg.php" method="POST">        
                                                                                 
                                        
                                         <input name="username"  type="text" value="Username">
+                                        <input name="password"  type="password" value="Password">
+                                        <input name="password"  type="password" value="Re-Enter Password">
 
-                                        <input name="passwd"  type="passwd" value="Password">
-
-
-                                        <input type="submit" value="Sign Up">
-
+                                        <input type="submit" value="Sign Up" id="submit_button">
                                 </form>
-
                          </div>
-
                                                  
                                         
-
                       
-
-
-                
-
         </body>        
-
-
-
 </html>
