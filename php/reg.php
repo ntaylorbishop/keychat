@@ -23,9 +23,9 @@
 			session_start();
 			$_SESSION["user_id"] = $user_id;
 			$r = mysql_query("UPDATE users SET isonline=true WHERE id='$user_id'");
-			echo "YO:".$user_id;
+			header('Location: http://127.0.0.1/basic-chat.html');
 		}
 	} else {
-		echo "you already exist";
+		die("YOU ALREADY REGISTERED, BITCH!");
 	}
 ?>

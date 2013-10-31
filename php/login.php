@@ -1,9 +1,7 @@
 <?php
 	$c = mysql_connect("localhost", "phpuser", "password");
-	if (!$c) {
-		echo "Database connection failed!\n";
-		die();
-	}
+	if (!$c)
+		die("DATABASE ERROR, BITCH");
 	mysql_select_db("keychat");
 
 	$username = mysql_real_escape_string($_POST['user']);
@@ -13,12 +11,12 @@
 	$loginresult = mysql_query($loginquery);
 
 	if (mysql_num_rows($loginresult) == 0) {
-   		echo "<html><body> Failure logging in </body></html>";
+		die("YO, COULDN't LOG IN, BITCH!");
 	} else {
 		session_start();
 		$_SESSION["user_id"] = $loginresult['id'];
-		echo "<html><body> Success logging in </body></html>";
 		$loginquery = "UPDATE users SET isonline='1' WHERE id='$user_id'";
 		mysql_query($loginquery);
+		header('Location: http://127.0.0.1/basic-chat.html');
 	}
 ?>
