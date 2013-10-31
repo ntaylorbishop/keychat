@@ -34,6 +34,7 @@
 	$con = mysql_connect('localhost','phpuser','password');
 	if (!$con)
 		die('Could not connect: ' . mysql_error($con));
+	mysql_select_db("keychat");
 
 	if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		send_message();

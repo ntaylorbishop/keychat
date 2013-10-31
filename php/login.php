@@ -4,6 +4,7 @@
 		echo "Database connection failed!\n";
 		die();
 	}
+	mysql_select_db("keychat");
 
 	$username = mysql_real_escape_string($_POST['user']);
 	$password = mysql_real_escape_string($_POST['pwd']);
