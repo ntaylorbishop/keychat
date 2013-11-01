@@ -1,4 +1,5 @@
 <?php
+	error_reporting(E_ALL ^ E_DEPRECATED);
 	function start_conversation() {
 		if (!isset($_POST["their_username"]))
 			die("INVALID REQUEST MOTHERFUCKER");

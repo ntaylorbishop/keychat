@@ -1,4 +1,5 @@
 <?php
+	error_reporting(E_ALL ^ E_DEPRECATED);
 	function send_message() {
 		if (!isset($_POST["convo_id"]) || !isset($_POST["text"]))
 			die("INVALID REQUEST MOTHERFUCKER");

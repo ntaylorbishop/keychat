@@ -1,4 +1,5 @@
 <?php
+	error_reporting(E_ALL ^ E_DEPRECATED);
 	$c = mysql_connect("localhost", "phpuser", "password");
 	if (!$c)
 		die("DATABASE ERROR, BITCH");
