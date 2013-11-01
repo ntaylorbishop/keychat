@@ -26,6 +26,7 @@
 		echo json_encode($response);
 	}
 
+	session_start();
 	$user_id = $_SESSION["user_id"];
 	if (!isset($_SESSION["user_id"])) {
 		die("YOU ARE NOT LOGGED IN, BITCH");

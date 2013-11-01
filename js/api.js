@@ -110,8 +110,10 @@ function byteify_printables(text)
 
 function verify_conversation_started(e)
 {
-	/* Do stuff */
-	interface_ops.init_conversation(data);
+	if (this.readyState === 4) {
+		interface_ops.init_conversation(data);
+		console.log(this.responseText);
+	}
 }
 
 function start_conversation(their_username)

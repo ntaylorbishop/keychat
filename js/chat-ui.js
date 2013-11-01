@@ -16,10 +16,15 @@ function show_got_message_in_window(text)
 	d.appendChild(p);
 }
 
+function init_conversation()
+{
+	log("Initializing conversation!");
+}
+
 /* Interface between UI javascript and encryption backend javascript */
 var interface_ops = {
 	"got_message": show_got_message_in_window,
 	"sent_message": show_sent_message_in_window,
-	"init_conversation": null,
+	"init_conversation": init_conversation,
 	"end_conversation": null
 };

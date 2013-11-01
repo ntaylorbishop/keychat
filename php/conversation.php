@@ -45,14 +45,14 @@
 		echo json_encode($response);
 	}
 
-	$user_id = $_SESSION["user_id"];
-	if (!isset($_SESSION["user_id"])) {
+	session_start();
+	if (!isset($_SESSION["user_id"]))
 		die("YOU ARE NOT LOGGED IN, BITCH");
-	}
 
+	$user_id = $_SESSION["user_id"];
 	$con = mysql_connect('localhost','phpuser','password');
 	if (!$con)
-		die('Could not connect: ' . mysql_error($con));
+		die('Could not connect: '.mysql_error($con));
 	mysql_select_db("keychat");
 
 	if ($_SERVER['REQUEST_METHOD'] == "POST") {
