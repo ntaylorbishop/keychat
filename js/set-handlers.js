@@ -1,6 +1,7 @@
 var chatbutton = document.getElementById("send-message-button");
 chatbutton.onclick = function() {
-	message_ops.send_message("nobody", chatbutton.form.text.value);
+	log(chatbutton.form['their-username']);
+	message_ops.send_message(chatbutton.form['their-username'].value, chatbutton.form.text.value);
 };
 
 var convobutton = document.getElementById("convo-button");

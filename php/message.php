@@ -1,22 +1,21 @@
 <?php
 	error_reporting(E_ALL ^ E_DEPRECATED);
-	function send_message() {
+	function send_message($user_id) {
 		if (!isset($_POST["convo_id"]) || !isset($_POST["text"]))
 			die("INVALID REQUEST MOTHERFUCKER");
 
 		$convo_id = mysql_real_escape_string($_POST["convo_id"]);
 		$message_text = mysql_real_escape_string($_POST["text"]);
-		$r = mysql_query("SELECT id FROM conversations ='$their_username'");
+		$r = mysql_query("SELECT id FROM conversations WHERE id='$convo_id'");
 		if (!mysql_num_rows($r))
 			die("CONVERSATION DOES NOT EXIST MOTHERFUCKER");
 
-		$o = mysql_result($r, 0);
-		$r = mysql_query("INSERT INTO messages (convo_id,fromuser,text) VALUES ('$convo_id','$user_id','$message_text')");
+		$r = mysql_query("INSERT INTO messages (convo_id,fromuser,message) VALUES ('$convo_id','$user_id','$message_text')");
 	}
 
-	function long_poll_for_messages() {
+	function long_poll_for_messages($user_id) {
 		while (!connection_aborted()) {
-			$r = mysql_query("SELECT * FROM messages LEFT OUTER JOIN conversations WHERE (userone='$user_id' or usertwo='$user_id') and fromuser!='$user_id'");
+			$r = mysql_query("SELECT * FROM messages m, conversations c WHERE m.convo_id=c.id and (userone='$user_id' or usertwo='$user_id') and fromuser!='$user_id'");
 			if (mysql_num_rows($r))
 				break;
 			sleep(1);
@@ -38,13 +37,10 @@
 		die('Could not connect: ' . mysql_error($con));
 	mysql_select_db("keychat");
 
-	if ($_SERVER['REQUEST_METHOD'] == "POST") {
-		send_message();
-	} else if ($_SERVER['REQUEST_METHOD'] == "GET") {
-		long_poll_for_messages();
-	} else {
-		/* return error */
-		die();
-	}
+	if ($_SERVER['REQUEST_METHOD'] == "POST")
+		send_message($user_id);
+	else if ($_SERVER['REQUEST_METHOD'] == "GET")
+		long_poll_for_messages($user_id);
+	else
+		die("INVALID METHOD, BITCH");
 ?>
-

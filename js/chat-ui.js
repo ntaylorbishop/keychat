@@ -18,7 +18,10 @@ function show_got_message_in_window(text)
 
 function init_conversation()
 {
-	log("Initializing conversation!");
+	/* Make the chat window visable */
+	document.getElementById("start-convo").style.display = "none";
+	document.getElementById("messagelog").style.display = "block";
+	document.getElementById("sendmessage").style.display = "block";
 }
 
 /* Interface between UI javascript and encryption backend javascript */

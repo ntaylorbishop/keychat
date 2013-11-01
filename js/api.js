@@ -88,8 +88,8 @@ function send_message(their_username, message_text)
 	ciphertext = printableify_bytes(encryption_ops.encrypt(message_text, c["session_key"]));
 
 	data = {
-		"conversation": c["id"],
-		"message": ciphertext
+		"convo_id": c["id"],
+		"text": ciphertext
 	};
 
 	post_to_server("/php/message.php", data);
@@ -108,11 +108,18 @@ function byteify_printables(text)
 	return text;
 }
 
-function verify_conversation_started(e)
+function verify_conversation_started()
 {
 	if (this.readyState === 4) {
-		interface_ops.init_conversation(data);
-		console.log(this.responseText);
+		var r = JSON.parse(this.responseText);
+		if (r.id) {
+			conversations[r['their-username']] = {"id": r.id,
+				"session_key": "fontenotraley"};
+			document.getElementById("their-username").value = r['their-username'];
+			interface_ops.init_conversation();
+		} else {
+			console.log("ERROR in starting conversation");
+		}
 	}
 }
 
