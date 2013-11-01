@@ -20,10 +20,13 @@
 		if (!$insertion) {
 			die("DATABASE ERROR, BITCH");
 		} else {
-			session_start();
+			if(!isset($_SESSION)) {
+				session_destroy();
+				session_start();
+			}
 			$_SESSION["user_id"] = $user_id;
 			$r = mysql_query("UPDATE users SET isonline=true WHERE id='$user_id'");
-			header('Location: http://127.0.0.1/basic-chat.html');
+			header("Location: http://192.168.0.253/basic-chat.html");
 		}
 	} else {
 		die("YOU ALREADY REGISTERED, BITCH!");

@@ -70,13 +70,25 @@ function long_poll_for_messages(their_username)
 	get_from_server("/php/message.php", null, message_ops.receive_message);
 }
 
-function receive_message(event)
+function receive_message()
 {
-	/* Get text from even somehow... */
-	interface_ops.got_message(text);
 
-	/* Poll more */
-	message_ops.long_poll_for_messages(u);
+	if (this.readyState === 4) {
+		if (this.status !== 200)
+			return message_ops.long_poll_for_messages();
+
+		var r = JSON.parse(this.responseText);
+		c = conversations[r['their-username']];
+		if (c === undefined)
+			return log("CONVERSATION DOES NOT EXIST. WAT.");
+
+		plaintext = encryption_ops.decrypt(byteify_printables(r.text), c["session_key"]);
+
+		interface_ops.got_message(plaintext);
+
+		/* Poll more */
+		message_ops.long_poll_for_messages();
+	}
 }
 
 function send_message(their_username, message_text)
@@ -136,10 +148,16 @@ function long_poll_for_conversations()
 	get_from_server("php/conversation.php", null, conversation_ops.receive_conversation);
 }
 
-function receive_conversation(e)
+function receive_conversation()
 {
-	/* Do stuff */
-	interface_ops.init_conversation(data);
+	if (this.readyState === 4) {
+		log(this.responseText);
+		var r = JSON.parse(this.responseText);
+		conversations[r['their-username']] = {"id": r.id,
+			"session_key": "fontenotraley"};
+		document.getElementById("their-username").value = r['their-username'];
+		interface_ops.init_conversation();
+	}
 }
 
 var encryption_ops = {
